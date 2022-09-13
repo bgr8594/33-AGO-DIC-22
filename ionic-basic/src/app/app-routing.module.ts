@@ -38,6 +38,10 @@ const routes: Routes = [
     path: 'receptor',
     loadChildren: () => import('./receptor/receptor.module').then( m => m.ReceptorPageModule)
   },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },
 
 
 ];

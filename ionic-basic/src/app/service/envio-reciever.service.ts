@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class ServicesCService {
+export class EnvioReceptorService {
   private objectSource = new BehaviorSubject<{}>({});
   private listSource = new BehaviorSubject<any[]>([]);
 

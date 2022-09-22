@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EnvioReceptorService } from './envio-reciever.service';
+import { RecetaService } from './receta.service';
 
-describe('EnvioReceptorService', () => {
-  let service: EnvioReceptorService;
+describe('RecetaService', () => {
+  let service: RecetaService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(EnvioReceptorService);
+    service = TestBed.inject(RecetaService);
   });
 
   it('should be created', () => {

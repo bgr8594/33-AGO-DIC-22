@@ -35,6 +35,14 @@ const routes: Routes = [
     path: 'receta',
     loadChildren: () => import('./receta/receta.module').then( m => m.RecetaPageModule)
   },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  /*{
+    path: 'float-menu',
+    loadChildren: () => import('./float-menu/float-menu.module').then( m => m.FloatMenuPageModule)
+  },*/
 ];
 
 @NgModule({

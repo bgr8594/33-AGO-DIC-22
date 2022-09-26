@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Personaje } from '../models/personaje.model';
-import { ServicesCService } from '../service/envio-reciever.service';
+import { EnvioReceptorService} from '../service/envio-reciever.service';
 
 @Component({
   selector: 'app-reciever',
@@ -13,7 +13,7 @@ export class RecieverPage implements OnInit {
   list: any[];
   personajes: Personaje[];
 
-  constructor(private serviceCService: ServicesCService) { }
+  constructor(private serviceCService: EnvioReceptorService) { }
 
   ngOnInit() {
     this.serviceCService.$getObjectSource.subscribe(data=>{

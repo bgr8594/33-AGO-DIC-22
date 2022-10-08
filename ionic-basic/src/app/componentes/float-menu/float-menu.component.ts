@@ -13,7 +13,7 @@ export class FloatMenuComponent implements OnInit {
     {nombre: 'home',enlace:'/home',
     icono:'home-outline'},
     {nombre: 'Alumnos',enlace:'/alumnos',
-  icono:'school-outline'},
+    icono:'school-outline'},
     {nombre: 'Receteas',enlace:'/receta',
     icono:'restaurant-outline'},
     {nombre: 'Presupuesto',enlace:'/presupuesto',

@@ -7,8 +7,9 @@ import { ComponentesModule } from './componentes/componentes.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+
 @NgModule({
-  declarations: [AppComponent],
+ 
   imports: [ComponentesModule,BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     HttpClientModule],
   providers: [HttpClientModule, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

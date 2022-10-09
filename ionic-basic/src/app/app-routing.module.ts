@@ -26,7 +26,7 @@ const routes: Routes = [
     path: 'inicio',
     loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule),
     canActivate: [AutGuardGuard]
-
+    
   },
   {
     path: 'receptor',
@@ -62,13 +62,15 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    path: 'destinos',
+    loadChildren: () => import('./destinos/destinos.module').then( m => m.DestinosPageModule),
+    canActivate: [AutGuardGuard]
   },
   {
-    path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+    path: 'destinos',
+    loadChildren: () => import('./destinos/destinos.module').then( m => m.DestinosPageModule)
   },
+
 
 ];
 

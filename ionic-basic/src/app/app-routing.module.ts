@@ -30,8 +30,11 @@ export class AppRoutingModule { }
  {
   path: 'detalle-receta',
   loadChildren: () => import('./detalle-receta/detalle-receta.module').then( m => m.DetalleRecetaPageModule)
-},
+}
 {
   path: 'receta',
   loadChildren: () => import('./receta/receta.module').then( m => m.RecetaPageModule)
+}, {
+  path: 'tabs',
+  loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
 },

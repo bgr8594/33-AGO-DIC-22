@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Receta } from '../models/receta.model';
 import { RecetaService } from '../service/receta.service';
 
@@ -11,7 +12,8 @@ export class RecetaPage implements OnInit {
 
   recetas: Receta[];
   
-  constructor(private recetaService: RecetaService) {
+  constructor(private recetaService: RecetaService,
+    private router: Router) {
 
    }
 
@@ -19,4 +21,7 @@ export class RecetaPage implements OnInit {
     this.recetas = this.recetaService.getRecetas();
   }
 
+  irDetalleReceta(id: number){
+    this.router.navigate([`main/detalle-receta/${id}`]);
+  }
 }

@@ -27,11 +27,11 @@
                 Password
             </ion-label>
             <ion-input type="password" formControlName="password"></ion-input>
-            <ion-text color="danger" 
-            *ngIf="!ionicForm.valid && ionicForm.controls['password'].touched && !hasError('password','required')">
-                <h5>
-                    Maximo 6 caracteres
-                </h5>
+                <ion-text color="danger" 
+                *ngIf="!ionicForm.valid && ionicForm.controls['password'].touched && !hasError('password','required')">
+                    <h5>
+                        Maximo 6 caracteres
+                    </h5>
             </ion-text>
             <ion-text color="danger" *ngIf="hasError('password','required')">
                 <h5>

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DestinosFirestorePage } from './destinos-firestore.page';
+import { DestinosFirestorePage } from './destinos-api.page';
 
 const routes: Routes = [
   {

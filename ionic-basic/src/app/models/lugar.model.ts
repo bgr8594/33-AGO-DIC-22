@@ -1,4 +1,7 @@
 export class Lugar {
+
+    id?: string;
+    
     nombre: string;
 
     ubicacion?:{latitud:string, longitud:string}

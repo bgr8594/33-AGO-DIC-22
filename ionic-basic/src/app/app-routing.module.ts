@@ -55,6 +55,10 @@ const routes: Routes = [
       {
         path: 'admin',
         loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
+      },
+      {
+        path: 'galeria',
+        loadChildren: () => import('./galeria/galeria.module').then( m => m.GaleriaPageModule)
       }
     ],
     canActivate: [AutGuardGuard]

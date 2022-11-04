@@ -55,6 +55,10 @@ const routes: Routes = [
     path: 'fire-store',
     loadChildren: () => import('./fire-store/fire-store.module').then( m => m.FireStorePageModule)
   },
+  {
+    path: 'destinos-api',
+    loadChildren: () => import('./destinos-api/destinos-api.module').then( m => m.DestinosApiPageModule)
+  },
 ];
 
 @NgModule({

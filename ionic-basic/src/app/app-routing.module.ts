@@ -51,6 +51,10 @@ const routes: Routes = [
     path: 'destinos',
     loadChildren: () => import('./destinos/destinos.module').then( m => m.DestinosPageModule)
   },
+  {
+    path: 'fire-store',
+    loadChildren: () => import('./fire-store/fire-store.module').then( m => m.FireStorePageModule)
+  },
 ];
 
 @NgModule({

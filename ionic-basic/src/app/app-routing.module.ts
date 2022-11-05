@@ -87,7 +87,11 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'login',
     pathMatch: 'full'
+  },  {
+    path: 'map',
+    loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
   }
+
 ];
 
 @NgModule({

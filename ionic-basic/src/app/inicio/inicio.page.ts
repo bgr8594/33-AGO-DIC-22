@@ -28,6 +28,6 @@ export class InicioPage implements OnInit {
         this.serviceCService.sendObjectSource(this.user);
     this.serviceCService.sendListSource(this.list);
 
-    this.router.navigate(['/receptor']);
+    this.router.navigate(['main/receptor']);
       }
 }

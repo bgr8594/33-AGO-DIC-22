@@ -21,10 +21,10 @@ export class FloatMenuComponent implements OnInit, OnDestroy {
   public subscription : Subscription;
   
   datosMenu: MenuElement[] =[
+    {nombre: 'segment-button', enlace:'/segment-button', icono: 'code-slash-outline'},
+    {nombre: 'agregar usuario', enlace:'/register', icono: 'person-add-outline'},
     {nombre: 'login',enlace:'/login',
-    icono:'log-in-outline'},
-    {nombre: 'logout',enlace:'/home',
-    icono:'log-out-outline'}
+    icono:'log-in-outline'}
   ];
   constructor(
     private autService: AuthService,
@@ -66,15 +66,17 @@ export class FloatMenuComponent implements OnInit, OnDestroy {
           {nombre: 'Turismo-firestore',enlace:'main/destinos', icono:'airplane'},
           {nombre: 'Turismo-api',enlace:'main/destinos-api', icono:'airplane'},
           {nombre: 'Tabs',enlace:'main/tabs', icono:'folder-outline'},
-          {nombre: 'login',enlace:'/login', icono:'log-in-outline'},
+          {nombre: 'segment-button', enlace:'/segment-button', icono: 'code-slash-outline'},
+          {nombre: 'agregar usuario', enlace:'/register', icono: 'person-add-outline'},
           {nombre: 'logout',enlace:'/home',icono:'log-out-outline'}
         ];
 
       }       
      else{
         this.datosMenu =[
-          {nombre: 'login',enlace:'/login', icono:'log-in-outline'},
-          {nombre: 'logout',enlace:'/home', icono:'log-out-outline'}
+          {nombre: 'segment-button', enlace:'/segment-button', icono: 'code-slash-outline'},
+          {nombre: 'agregar usuario', enlace:'/register', icono: 'person-add-outline'},
+          {nombre: 'login',enlace:'/login', icono:'log-in-outline'}
         ];
       }
     });

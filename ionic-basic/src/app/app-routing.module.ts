@@ -72,7 +72,11 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: '**',
+    path: 'segment-button',
+    loadChildren: () => import('./segment-button/segment-button.module').then( m => m.SegmentButtonPageModule)
+  },
+  {
+    path: '**', // ruta comodit es debe ir al final, ya que si agregamos una ruta despues, siempre tomara el comodin
     redirectTo: 'login',
     pathMatch: 'full'
   }

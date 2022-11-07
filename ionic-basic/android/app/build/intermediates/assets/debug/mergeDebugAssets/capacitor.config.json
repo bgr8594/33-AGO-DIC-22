@@ -1,0 +1,6 @@
+{
+	"appId": "com.firebasetest.org",
+	"appName": "ionic-basic",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

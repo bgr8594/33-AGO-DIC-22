@@ -3,7 +3,7 @@ import { AuthService } from '../service/autservice.service';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
+import { ModalController, LoadingController } from '@ionic/angular';
 import { ModalErrorComponent } from '../componentes/modal-error/modal-error.component';
 
 @Component({
@@ -15,15 +15,15 @@ export class RegisterPage implements OnInit {
 
   user: User = new User();
   formRegister : FormGroup;
-
   constructor(
     private autSvc: AuthService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private loadingController: LoadingController
     ) {
       this.buildForm();
-      this.formRegister.reset();
+      this.formRegister.reset()
      }
 
   ngOnInit() {
@@ -35,6 +35,7 @@ export class RegisterPage implements OnInit {
     if(this.formRegister.valid){
       this.user.email = this.formRegister.get('email').value;
       this.user.password = this.formRegister.get('password').value;
+      this.presentLoadingWithOptions();
       this.onRegister();
     }
   }
@@ -46,10 +47,12 @@ export class RegisterPage implements OnInit {
   async onRegister(){
     this.autSvc.onRegister(this.user).then(user=>{
       if(user){
+        this.loadingController.dismiss();
         console.log('Successfully created user!');
         this.router.navigate(['/login']);
       }
     }).catch(error=>{
+      this.loadingController.dismiss();
       if(error.code =='auth/email-already-in-use'){
         this.openModal(error);
       }
@@ -81,4 +84,20 @@ export class RegisterPage implements OnInit {
     });
     return await modal.present();
   }
+
+  async presentLoadingWithOptions() {
+    const loading = await this.loadingController.create({
+      //spinner: null,
+      //duration: 5000,
+      message: 'Iniciando sesión...',
+      translucent: true,
+      //cssClass: 'custom-class custom-loading',
+      backdropDismiss: true
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed with role:', role);
+  }
+
 }

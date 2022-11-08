@@ -4,18 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TabsPageRoutingModule } from './tabs-routing.module';
+import { GaleriaPageRoutingModule } from './galeria-routing.module';
 
-import { TabsPage } from './tabs.page';
-
+import { GaleriaPage } from './galeria.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TabsPageRoutingModule
+    GaleriaPageRoutingModule
   ],
-  declarations: [TabsPage]
+  declarations: [GaleriaPage]
 })
-export class TabsPageModule {}
+export class GaleriaPageModule {}

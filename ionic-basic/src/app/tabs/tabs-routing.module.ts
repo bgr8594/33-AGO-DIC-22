@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { TabsPage } from './tabs.page';
+import { GaleriaPageModule } from '../galeria/galeria.module';
 
 const routes: Routes = [
 {
@@ -14,8 +15,8 @@ const routes: Routes = [
       }
       ,
       {
-        path: 'recetas',
-        loadChildren: () => import('../receta/receta.module').then(m=>m.RecetaPageModule)
+        path: 'galeria',
+        loadChildren: () => import('../galeria/galeria.module').then(m=>m.GaleriaPageModule)
       },
       {
         path: 'presupuesto',

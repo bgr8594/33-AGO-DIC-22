@@ -60,20 +60,14 @@ export class FloatMenuComponent implements OnInit, OnDestroy {
     onAuthStateChanged(this.autService.getStateAuth(), user=>{
       if(user!=null && user != undefined){
         this.datosMenu =[
-          {nombre: 'Alumnos',enlace:'/alumnos',
-    icono:'school-outline'},
-      {nombre: 'Recetas',enlace:'/receta',
-      icono:'restaurant-outline'},
-      {nombre: 'Inicio',enlace:'/inicio',
-      icono:'navigate-outline'},
-      {nombre: 'Turismo',enlace:'/destinos',
-      icono:'airplane'},
-      {nombre: 'Tabs',enlace:'/tabs',
-      icono:'folder-outline'},
-      {nombre: 'Login',enlace:'/login',
-      icono:'log-in-outline'},
-      {nombre: 'Logout',enlace:'/home',
-      icono:'log-out-outline'}
+          {nombre: 'Alumnos',enlace:'/alumnos', icono:'school-outline'},
+      {nombre: 'Recetas',enlace:'/receta', icono:'restaurant-outline'},
+      {nombre: 'Inicio',enlace:'/inicio', icono:'navigate-outline'},
+      {nombre: 'Turismo',enlace:'/destinos', icono:'airplane'},
+      {nombre: 'Turismo-api',enlace:'/destinos-api', icono:'airplane'},
+      {nombre: 'Tabs',enlace:'/tabs', icono:'folder-outline'},
+      {nombre: 'Login',enlace:'/login', icono:'log-in-outline'},
+      {nombre: 'Logout',enlace:'/home', icono:'log-out-outline'}
         ];
 
       }       

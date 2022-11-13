@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from '../service/storage.service';
 
 @Component({
   selector: 'app-segment-button',
@@ -7,12 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SegmentButtonPage implements OnInit {
 
-  constructor() { }
+  usuario: any = {};
+  constructor(private storage: StorageService) { }
 
   ngOnInit() {
+     this.storage.setValue('usuario',
+     {nombre:'bgr nombre', direccion:'Jose Silvestre aramberri'})
+     this.getUsuario();
   }
 
-  segmentChanged(ev: any) {
-    console.log('Segment changed', ev);
+  getUsuario(){
+    this.storage.getValue('usuario').
+    then(user=>{
+      this.usuario = user;
+    }).
+    catch(error=>{
+      console.error(error);
+    });
   }
 }

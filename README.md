@@ -64,6 +64,8 @@ agregar en archivo info.plist las siguientes propiedades:
     <string>Requiero acceso a la camara</string>
     <key>NSPhotoLibraryAddUsageDescription</key>
     <string>Requiero acceso a tu libreria</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Acceder a tu ubicacion</string>
 
 
 Despliege de aplicacion en ios

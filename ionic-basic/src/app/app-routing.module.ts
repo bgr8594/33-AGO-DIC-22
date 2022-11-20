@@ -75,6 +75,10 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: 'segment-button',
+    loadChildren: () => import('./segment-button/segment-button.module').then( m => m.SegmentButtonPageModule)
   }
 ];
 

@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'ionic-basic',
+  appId: 'com.firestoretest.org',
+  appName: 'ionic-basic-apk',
   webDir: 'www',
   bundledWebRuntime: false
 };

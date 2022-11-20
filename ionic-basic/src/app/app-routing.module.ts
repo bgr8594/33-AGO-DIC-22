@@ -26,7 +26,7 @@ const routes: Routes = [
       {
         path: 'inicio',
         loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
-
+    
       },
       {
         path: 'receptor',
@@ -55,6 +55,10 @@ const routes: Routes = [
       {
         path: 'admin',
         loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
+      },
+      {
+        path: 'galeria',
+        loadChildren: () => import('./galeria/galeria.module').then( m => m.GaleriaPageModule)
       }
     ],
     canActivate: [AutGuardGuard]
@@ -71,10 +75,6 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'login',
     pathMatch: 'full'
-  },
-  {
-    path: 'destinos-api',
-    loadChildren: () => import('./destinos-api/destinos-api.module').then( m => m.DestinosApiPageModule)
   }
 ];
 

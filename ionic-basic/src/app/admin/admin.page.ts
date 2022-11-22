@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { MenuServiceService } from 'src/app/service/menu-service.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.page.html',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPage implements OnInit {
 
-  constructor() { }
+  
+  constructor(private menuService: MenuServiceService) { }
 
   ngOnInit() {
+    this.menuService.setTitle("Administracion");
   }
 
 }

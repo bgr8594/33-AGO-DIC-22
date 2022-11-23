@@ -55,6 +55,7 @@ export class FloatMenuComponent implements OnInit, OnDestroy {
     this.titleMenu =titleMenu;
     this.router.navigate([link]);
   }
+  
   onMenuOpen(){
     onAuthStateChanged(this.autService.getStateAuth(), user=>{
       if(user!=null && user != undefined){
@@ -65,6 +66,8 @@ export class FloatMenuComponent implements OnInit, OnDestroy {
       icono:'restaurant-outline'},
       {nombre: 'inicio',enlace:'/inicio',
       icono:'navigate-outline'},
+      {nombre: 'Turismo',enlace:'/destinos',
+      icono:'airplane'},
       {nombre: 'Tabs',enlace:'/tabs',
       icono:'folder-outline'},
       {nombre: 'login',enlace:'/login',

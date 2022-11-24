@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MenuElement } from 'src/app/models/menu.model';
 
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/servicio/autservice.service';
-import { MenuServiceService } from 'src/app/servicio/menu-service.service';
+import { AuthService } from 'src/app/Servicio/autservice.service';
+import { MenuServiceService } from 'src/app/Servicio/menu-service.service';
 import { Subscription } from 'rxjs';
 import { onAuthStateChanged } from 'firebase/auth';
 
@@ -19,7 +19,7 @@ export class FloatMenuComponent implements OnInit, OnDestroy {
   public isLoged : any = false;
 
   public subscription : Subscription;
-
+  
   datosMenu: MenuElement[] =[
     {nombre: 'login',enlace:'/login',
     icono:'log-in-outline'},
@@ -55,26 +55,27 @@ export class FloatMenuComponent implements OnInit, OnDestroy {
     this.titleMenu =titleMenu;
     this.router.navigate([link]);
   }
-  
+
   onMenuOpen(){
     onAuthStateChanged(this.autService.getStateAuth(), user=>{
       if(user!=null && user != undefined){
         this.datosMenu =[
-          {nombre: 'Alumnos',enlace:'/alumnos',
+          {nombre: 'Alumnos',enlace:'main/alumnos',
     icono:'school-outline'},
-      {nombre: 'Receteas',enlace:'/receta',
+      {nombre: 'Receteas',enlace:'main/receta',
       icono:'restaurant-outline'},
-      {nombre: 'inicio',enlace:'/inicio',
+      {nombre: 'inicio',enlace:'main/inicio',
       icono:'navigate-outline'},
-      {nombre: 'Turismo',enlace:'/destinos',
+      {nombre: 'Turismo',enlace:'main/destinos',
       icono:'airplane'},
-      {nombre: 'Tabs',enlace:'/tabs',
+      {nombre: 'Tabs',enlace:'main/tabs',
       icono:'folder-outline'},
       {nombre: 'login',enlace:'/login',
       icono:'log-in-outline'},
           {nombre: 'logout',enlace:'/home',
           icono:'log-out-outline'}
         ];
+
       }       
      else{
         this.datosMenu =[

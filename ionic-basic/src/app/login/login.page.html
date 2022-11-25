@@ -3,7 +3,7 @@
         <ion-title>Login</ion-title>
     </ion-toolbar>
   </ion-header>
-  
+
   <ion-content padding>
     <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate></form>
     <ion-item>
@@ -37,6 +37,7 @@
             </h5>
         </ion-text>
     </ion-item>
+<form>
     <ion-item-divider>
         <ion-button size="larger" [disabled]="!ionicForm.valid"   type="submit">Login</ion-button>
         <ion-button size="larger" routerLink="/register">New</ion-button>

@@ -49,6 +49,10 @@ const routes: Routes = [
         loadChildren: () => import('./destinos/destinos.module').then( m => m.DestinosPageModule)
       },
       {
+        path: 'destinos-firestore',
+        loadChildren: () => import('./destinos-firestore/destinos-firestore.module').then( m => m.DestinosFirestorePageModule)
+      },
+      {
         path: 'admin',
         loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
       }
@@ -62,7 +66,11 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  }
+  },
+  {
+    path: '**',
+    redirectTo: 'login',
+    pathMatch: 'full'}
 ];
 
 @NgModule({

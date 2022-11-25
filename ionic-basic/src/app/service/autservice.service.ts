@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { initializeApp } from "firebase/app"
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, indexedDBLocalPersistence, initializeAuth  } from "firebase/auth";
 import { User } from '../models/user.model';
 import { getFirestore, collection, addDoc, getDocs, doc, setDoc, deleteDoc } from 'firebase/firestore';import { Lugar } from '../models/lugar.model';
 import { getDatabase } from "firebase/database";
+import { Capacitor } from '@capacitor/core';
 
-const firebaseApp = initializeApp(environment.firebaseConfig);
-const dbCloudFirestore = getFirestore(firebaseApp);
+//const firebaseApp = initializeApp(environment.firebaseConfig);
+//const dbCloudFirestore = getFirestore(firebaseApp);
 @Injectable({
   providedIn: 'root'
 })
@@ -17,8 +18,18 @@ export class AuthService {
   public isLoged : any = false;
   auth: Auth;
 
-  db = dbCloudFirestore;
+  dbCloudFirestore: any;
   constructor() {
+    const firebaseApp = initializeApp(environment.firebaseConfig);
+    if (Capacitor.isNativePlatform) {
+      initializeAuth(firebaseApp, {
+        persistence: indexedDBLocalPersistence
+      });
+
+      this.dbCloudFirestore = getFirestore(firebaseApp);
+
+    }
+
     this.auth = getAuth(firebaseApp);
     onAuthStateChanged(this.auth, user => {
       if(user!= undefined || user != null){
@@ -47,12 +58,12 @@ export class AuthService {
       latitud: lugar.latitud,
       longitud: lugar.longitud
     };
-    const docRef = await addDoc(collection(this.db,'lugar'), lugarTemp);
+    const docRef = await addDoc(collection(this.dbCloudFirestore,'lugar'), lugarTemp);
     console.log("Documento escrito con id: "+docRef.id);
   }
 
   async getLugares(destinos: Lugar[]) {
-    await getDocs(collection(this.db, 'lugar'))
+    await getDocs(collection(this.dbCloudFirestore, 'lugar'))
     .then((querySnapshot: any)=>{
       destinos.splice(0, destinos.length);
       querySnapshot.forEach((doc)=>{
@@ -71,7 +82,7 @@ export class AuthService {
     });
   }
   updateLugares(id: any, lugar: any): Promise<any>{
-    const docRef = doc(this.db, 'lugar', id);
+    const docRef = doc(this.dbCloudFirestore, 'lugar', id);
     const lugarAux = {nombre: lugar.nombre,
       latitud: lugar.latitud,
       longitud: lugar.longitud
@@ -81,7 +92,7 @@ export class AuthService {
   }
 
   deleteLugar(id: any): Promise<any>{
-    const docRef = doc(this.db, 'lugar', id);
+    const docRef = doc(this.dbCloudFirestore, 'lugar', id);
     return deleteDoc(docRef);
   }
 }

@@ -5,7 +5,9 @@ export class Lugar {
     id?: string; // id de firebase no corresponde a mi modelo
 
     nombre: string;
-
+    latitud: number;
+    longitud: number;
+    
     ubicacion?:{latitud:string, longitud:string}
 
 

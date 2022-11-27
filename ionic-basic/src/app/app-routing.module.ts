@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AutGuardGuard } from './service/aut-guard.guard';
-
 const routes: Routes = [
   {
     path: 'home',
@@ -26,7 +25,6 @@ const routes: Routes = [
     path: 'inicio',
     loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule),
     canActivate: [AutGuardGuard]
-
   },
   {
     path: 'receptor',
@@ -61,6 +59,13 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'destinos',
+    loadChildren: () => import('./destinos/destinos.module').then( m => m.DestinosPageModule),
+    canActivate: [AutGuardGuard]
+  },
+
+
 ];
 
 @NgModule({

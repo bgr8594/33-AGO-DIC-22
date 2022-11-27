@@ -36,10 +36,10 @@ export class FloatMenuComponent implements OnInit, OnDestroy {
         }
       });
 
-    this.subscription = this.menuService.$getTitleMenu.subscribe(data=>{
-      console.log(data);
-      this.titleMenu =data;
-    });
+      this.subscription = this.menuService.$getTitleMenu.subscribe(data=>{
+        console.log(data);
+        this.titleMenu =data;
+      });
 
     }
 
@@ -49,40 +49,42 @@ export class FloatMenuComponent implements OnInit, OnDestroy {
       }
     }
 
-  ngOnInit() {}
+    ngOnInit() {}
 
-  navegar(link: string, titleMenu: string){
-    this.titleMenu =titleMenu;
-    this.router.navigate([link]);
-  }
+    navegar(link: string, titleMenu: string){
+      this.titleMenu =titleMenu;
+      this.router.navigate([link]);
+    }
 
-  onMenuOpen(){
-    onAuthStateChanged(this.autService.getStateAuth(), user=>{
-      if(user!=null && user != undefined){
-        this.datosMenu =[
-          {nombre: 'Alumnos',enlace:'/alumnos',
-    icono:'school-outline'},
-      {nombre: 'Receteas',enlace:'/receta',
-      icono:'restaurant-outline'},
-      {nombre: 'inicio',enlace:'/inicio',
-      icono:'navigate-outline'},
-      {nombre: 'Tabs',enlace:'/tabs',
-      icono:'folder-outline'},
-      {nombre: 'login',enlace:'/login',
-      icono:'log-in-outline'},
-          {nombre: 'logout',enlace:'/home',
-          icono:'log-out-outline'}
-        ];
+    onMenuOpen(){
+      onAuthStateChanged(this.autService.getStateAuth(), user=>{
+        if(user!=null && user != undefined){
+          this.datosMenu =[
+            {nombre: 'Alumnos',enlace:'/alumnos',
+      icono:'school-outline'},
+        {nombre: 'Receteas',enlace:'/receta',
+        icono:'restaurant-outline'},
+        {nombre: 'inicio',enlace:'/inicio',
+        icono:'navigate-outline'},
+        {nombre: 'Turismo',enlace:'/destinos',
+        icono:'airplane'},
+        {nombre: 'Tabs',enlace:'/tabs',
+        icono:'folder-outline'},
+        {nombre: 'login',enlace:'/login',
+        icono:'log-in-outline'},
+            {nombre: 'logout',enlace:'/home',
+            icono:'log-out-outline'}
+          ];
 
-      }       
-     else{
-        this.datosMenu =[
-          {nombre: 'login',enlace:'/login',
-          icono:'log-in-outline'},
-          {nombre: 'logout',enlace:'/home',
-          icono:'log-out-outline'}
-        ];
-      }
-    });
-  }
-}
+        }       
+        else{
+           this.datosMenu =[
+             {nombre: 'login',enlace:'/login',
+             icono:'log-in-outline'},
+             {nombre: 'logout',enlace:'/home',
+             icono:'log-out-outline'}
+           ];
+         }
+       });
+     }
+   }

@@ -28,7 +28,7 @@ const routes: Routes = [
       },
       {
         path:'',
-        redirectTo: '/tabs/alumnos',
+        redirectTo: 'main/tabs/alumnos',
         pathMatch: 'full'
       }
     ]

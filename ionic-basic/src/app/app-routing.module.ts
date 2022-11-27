@@ -62,6 +62,10 @@ const routes: Routes = [
     path: 'destinos-firestore',
     loadChildren: () => import('./destinos-firestore/destinos-firestore.module').then( m => m.DestinosFirestorePageModule)
   },
+  {
+    path: 'galeria',
+    loadChildren: () => import('./galeria/galeria.module').then( m => m.GaleriaPageModule)
+  },
 
 
 ];

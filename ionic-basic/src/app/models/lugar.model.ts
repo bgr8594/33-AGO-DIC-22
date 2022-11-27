@@ -1,4 +1,11 @@
 export class Lugar {
+      // este id no se debe enviar al momento de actualizar como parte
+    // ó propiedad del objeto, solo es para ir directo
+    // por id, where id= '<idEnviado>'
+    id?: string; // id de firebase no corresponde a mi modelo
+  id(id: any, lugar: Lugar) {
+    throw new Error('Method not implemented.');
+  }
     nombre: string;
 
     ubicacion?:{latitud:string, longitud:string}

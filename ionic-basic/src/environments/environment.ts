@@ -2,17 +2,23 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+
 export const environment = {
-  production: false,
-  const firebaseConfig:{
-    apiKey: "AIzaSyAX9ZY9Wzw8QhYj-8hIN3eKxUMAlc0MzGY",
-    authDomain: "practica-c76a1.firebaseapp.com",
-    projectId: "practica-c76a1",
-    storageBucket: "practica-c76a1.appspot.com",
-    messagingSenderId: "1049418442363",
-    appId: "1:1049418442363:web:5b3581a572ca98d53524de"
+  production: false, 
+  firebaseConfig : {
+      apiKey: "AIzaSyA3aHDFu7axO8IbGFRV8khfbIIG_R3Tis8",
+      authDomain: "gamenews-27f75.firebaseapp.com",
+      databaseURL: "https://gamenews-27f75-default-rtdb.firebaseio.com",
+      projectId: "gamenews-27f75",
+      storageBucket: "gamenews-27f75.appspot.com",
+      messagingSenderId: "563323959827",
+      appId: "1:563323959827:web:fcaa93c7ade506a5299de6",
+      measurementId: "G-LQTS5N2R3J"
+    }
   };
-};
 
 /*
  * For easier debugging in development mode, you can import the following file

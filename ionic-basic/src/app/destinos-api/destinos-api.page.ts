@@ -4,9 +4,9 @@ import { Lugar } from '../models/lugar.model';
 import { ApiService } from '../service/api.service';
 
 @Component({
-  selector: 'app-destinos-firestore',
-  templateUrl: './destinos-firestore.page.html',
-  styleUrls: ['./destinos-firestore.page.scss'],
+  selector: 'app-destinos-api',
+  templateUrl: './destinos-api.page.html',
+  styleUrls: ['./destinos-api.page.scss'],
 })
 export class DestinosFirestorePage implements OnInit {
   lugar: Lugar = new Lugar();

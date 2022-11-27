@@ -49,8 +49,8 @@ const routes: Routes = [
         loadChildren: () => import('./destinos/destinos.module').then( m => m.DestinosPageModule)
       },
       {
-        path: 'destinos-firestore',
-        loadChildren: () => import('./destinos-firestore/destinos-firestore.module').then( m => m.DestinosFirestorePageModule)
+        path: 'destinos-api',
+        loadChildren: () => import('./destinos-api/destinos-api.module').then( m => m.DestinosFirestorePageModule)
       },
       {
         path: 'admin',

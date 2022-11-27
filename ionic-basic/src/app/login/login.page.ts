@@ -5,7 +5,6 @@ import { ModalController } from '@ionic/angular';
 import { AuthService } from '../service/autservice.service';
 import { Router } from '@angular/router';
 import {FormGroup, FormBuilder, Validators, FormControl, AbstractControl} from '@angular/forms';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -15,7 +14,7 @@ export class LoginPage implements OnInit {
 
   user: User = new User();
 
-  ionicForm!: FormGroup;
+  ionicForm: FormGroup;
 
   constructor(
     private router: Router,
@@ -23,11 +22,11 @@ export class LoginPage implements OnInit {
     private autSvc: AuthService,
     private formBuilder: FormBuilder
     ) { }
+    
 
   ngOnInit() {
     this.buildForm();
   }
-
   hasError: any = (controlName: string, errorName: string) => {
 		return !this.ionicForm.controls[controlName].valid &&
 			this.ionicForm.controls[controlName].hasError(errorName) &&
@@ -46,7 +45,7 @@ export class LoginPage implements OnInit {
     this.autSvc.onLogin(this.user).then((user:any)=>{
       if(user!=null && user.code ==undefined){
         console.log('Successfully logged in!');
-        this.router.navigate(['/presupuesto']);
+        this.router.navigate(['main/presupuesto']);
       }
       else{
         if(user.code){
@@ -60,7 +59,6 @@ export class LoginPage implements OnInit {
     })
 
   }
-
   submitForm(){
     if(this.ionicForm.valid){
       this.user.email = this.ionicForm.get('email').value;
@@ -73,16 +71,16 @@ export class LoginPage implements OnInit {
     this.ionicForm.reset();
   }
 
+
   async openModal(user: any){
     const modal = await this.modalCtrl.create({
       component: ModalErrorComponent,
       componentProps:{
-        error: 'Ingres password y/o contraseña'
+        error: 'Ingrese password y/o contraseña'
       }
     });
     return await modal.present();
   }
-
   buildForm(){
     this.ionicForm = this.formBuilder.group({
       email: new FormControl('',{validators: [Validators.email,Validators.required]}),

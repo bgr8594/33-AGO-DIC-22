@@ -14,13 +14,15 @@ export class DestinosPage implements OnInit {
   ionicForm!: FormGroup;
   estado: string ="Alta destino";
   editando: boolean= false;
-
+  latitud!: number;
+  longitud!: number;
   constructor(private authService: AuthService,
     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.buildForm();
-    this.authService.getLugares(this.destinos);
+    this.getPosition();
+    //this.authService.getLugares(this.destinos);
   }
 
   // cada que se vuelve a entrar a la pagina ó componente de pagina
@@ -37,6 +39,8 @@ export class DestinosPage implements OnInit {
 
   submitForm(){
     if(this.ionicForm.valid){
+      this.lugar.latitud = this.latitud;
+      this.lugar.longitud = this.longitud;
       if(!this.editando){
         this.lugar.nombre = this.ionicForm.get('nombre').value;
         this.authService.altaLugar(this.lugar).then((e:any)=>{
@@ -47,13 +51,13 @@ export class DestinosPage implements OnInit {
         });        
       } else{
         this.lugar.nombre = this.ionicForm.get('nombre').value;
-        this.authService.updateLugares(this.lugar.id, this.lugar).then((e: any)=>{
+        this.authService.updateLugares(this.lugar.id, this.lugar).then(e=>{
           this.editando= false;
           this.estado = "Alta destino";
           this.lugar = new Lugar();
           this.ionicForm.reset();
           this.authService.getLugares(this.destinos);
-        }).catch((e: any)=>{
+        }).catch(e=>{
           console.error(e);
         });
       }
@@ -70,7 +74,6 @@ export class DestinosPage implements OnInit {
       this.ionicForm.controls[controlName].hasError(errorName) &&
       this.ionicForm.controls[controlName].touched;
   }  
-
   editarLugar(id: any, lugar: any) {
     this.editando = true;
     this.lugar = lugar;
@@ -82,9 +85,9 @@ export class DestinosPage implements OnInit {
     this.estado = "Alta destino";
     this.editando = false;
     this.ionicForm.reset();
-    this.authService.deleteLugar(id).then((response: any)=>{
+    this.authService.deleteLugar(id).then(response=>{
       this.authService.getLugares(this.destinos);     
-    }).catch((error: any)=>{});
+    }).catch(error=>{});
 
   }
 
@@ -94,4 +97,19 @@ export class DestinosPage implements OnInit {
     this.ionicForm.reset();
     this.lugar = new Lugar();
   }
+  getPosition(): Promise<any> {
+		return new Promise((resolve: any, reject: any): any => {
+			navigator.geolocation.getCurrentPosition((resp: any) => {
+				this.latitud = resp.coords.latitude;
+				this.longitud = resp.coords.longitude;
+			},
+			(err: any) => {
+				if ( err.code === 1 ) {
+					alert('Favor de activar la geolocalización en tu navegador y recargar la pantalla.');
+				}
+				this.latitud = null;
+				this.longitud = null;
+			}, {timeout: 5000, enableHighAccuracy: true });
+		});
+	}    
 }

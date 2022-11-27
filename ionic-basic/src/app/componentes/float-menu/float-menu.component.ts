@@ -19,7 +19,7 @@ export class FloatMenuComponent implements OnInit, OnDestroy {
   public isLoged : any = false;
 
   public subscription : Subscription;
-
+  
   datosMenu: MenuElement[] =[
     {nombre: 'login',enlace:'/login',
     icono:'log-in-outline'},
@@ -60,27 +60,21 @@ export class FloatMenuComponent implements OnInit, OnDestroy {
     onAuthStateChanged(this.autService.getStateAuth(), user=>{
       if(user!=null && user != undefined){
         this.datosMenu =[
-          {nombre: 'Alumnos',enlace:'main/alumnos',
-    icono:'school-outline'},
-    {nombre: 'Receteas',enlace:'main/receta',
-      icono:'restaurant-outline'},
-      {nombre: 'inicio',enlace:'main/inicio',
-      icono:'navigate-outline'},
-      {nombre: 'Turismo',enlace:'main/destinos',
-      icono:'folder-outline'},
-      {nombre: 'Tabs',enlace:'main/tabs',
-      icono:'log-in-outline'},
-          {nombre: 'logout',enlace:'/home',
-          icono:'log-out-outline'}
+          {nombre: 'Alumnos',enlace:'main/alumnos', icono:'school-outline'},
+          {nombre: 'Receteas',enlace:'main/receta', icono:'restaurant-outline'},
+          {nombre: 'inicio',enlace:'main/inicio', icono:'navigate-outline'},
+          {nombre: 'Turismo-firestore',enlace:'main/destinos', icono:'airplane'},
+          {nombre: 'Turismo-api',enlace:'main/destinos-firestore', icono:'airplane'},
+          {nombre: 'Tabs',enlace:'main/tabs', icono:'folder-outline'},
+          {nombre: 'login',enlace:'/login', icono:'log-in-outline'},
+          {nombre: 'logout',enlace:'/home',icono:'log-out-outline'}
         ];
 
       }       
      else{
         this.datosMenu =[
-          {nombre: 'login',enlace:'/login',
-          icono:'log-in-outline'},
-          {nombre: 'logout',enlace:'/home',
-          icono:'log-out-outline'}
+          {nombre: 'login',enlace:'/login', icono:'log-in-outline'},
+          {nombre: 'logout',enlace:'/home', icono:'log-out-outline'}
         ];
       }
     });

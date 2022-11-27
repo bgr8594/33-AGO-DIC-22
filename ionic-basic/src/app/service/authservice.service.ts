@@ -1,36 +1,42 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { environment } from 'src/environments/environment';
+import { initializeApp } from "firebase/app"
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { User } from '../models/user.model';
+
+const firebaseApp = initializeApp(environment.firebaseConfig);
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthserviceService {
+export class AuthService {
 
   public isLoged : any = false;
+  auth: Auth;
 
-  constructor(private afAuth: AngularFireAuth) { 
-    afAuth.authState.subscribe(user => this.isLoged= user);
-  }
-  //login
-  async onLogin(user: User){
-    try{
-      return await this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
-    }
-    catch(error){
-      console.log('Error en login user', error);
-      return error;
-    }
-  }
+  constructor() {
+    this.auth = getAuth(firebaseApp);
+    onAuthStateChanged(this.auth, user => {
+      if(user!= undefined || user != null){
+        this.isLoged = user;
+      }
+    });
+   }
 
-  //register
-  async onRegister(user: User){
-    try{
-      return await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
-    }
-    catch(error){
-      console.log('Error en register user', error);
+   tieneSesion(){
+    return this.isLoged;
+   }
 
-    }
+   getStateAuth(){
+    return this.auth;
+   }
+     //login
+  onLogin(user: User): Promise<any>{
+      return signInWithEmailAndPassword(this.auth, user.email, user.password);
   }
+   //register
+   onRegister(user: User): Promise<any>{
+      return  createUserWithEmailAndPassword(this.auth, user.email, user.password);
+  }     
 }

@@ -1,4 +1,4 @@
-export class User {
-    email: string;
-    password: string;
-  }
+export interface UserPhoto {
+  filepath: string;
+  webviewPath: string;
+}
